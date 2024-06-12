@@ -1,0 +1,35 @@
+.footer {
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  bottom: 0;
+  pointer-events: all;
+  overflow: hidden;
+}
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__content.light {
+  color: #fff;
+}
+.footer__content.dark {
+  color: #000;
+}
+.footer__content > ul {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer__content ul li > a {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.footer__content ul li > a:hover {
+  color: #000;
+}
+.footer__content-link,
+.footer__content > ul {
+  padding: 20px 30px;
+}

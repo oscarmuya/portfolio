@@ -2,32 +2,203 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* @font-face {
+  font-family: "lxe-base";
+  font-style: normal;
+  font-weight: 100;
+  font-display: fallback;
+  src: url("../public/fonts/mr-med.woff2") format("woff2");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: "lxe-base";
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url("../public/fonts/mr-med.woff2") format("woff2");
 }
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: italic;
+  font-weight: 100;
+  font-display: fallback;
+  src: url("../public/fonts/mr-med.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: normal;
+  font-weight: 300;
+  font-display: fallback;
+  src: url("../public/fonts/mr-med.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: italic;
+  font-weight: 300;
+  font-display: fallback;
+  src: url("../public/fonts/mr-med.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: italic;
+  font-weight: 400;
+  font-display: fallback;
+  src: url("../public/fonts/mr-med.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: normal;
+  font-weight: 500;
+  font-display: fallback;
+  src: url("../public/fonts/lxe.woff") format("woff");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: italic;
+  font-weight: 500;
+  font-display: fallback;
+  src: url("../public/fonts/lxe.woff") format("woff");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: normal;
+  font-weight: 600;
+  font-display: fallback;
+  src: url("../public/fonts/lxe.woff") format("woff");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: italic;
+  font-weight: 600;
+  font-display: fallback;
+  src: url("../public/fonts/lxe.woff") format("woff");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: normal;
+  font-weight: 700;
+  font-display: fallback;
+  src: url("../public/fonts/lxe.woff") format("woff");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: italic;
+  font-weight: 700;
+  font-display: fallback;
+  src: url("../public/fonts/lxe.woff") format("woff");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: normal;
+  font-weight: 800;
+  font-display: fallback;
+  src: url("../public/fonts/lxe.woff") format("woff");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: italic;
+  font-weight: 800;
+  font-display: fallback;
+  src: url("../public/fonts/lxe.woff") format("woff");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: normal;
+  font-weight: 900;
+  font-display: fallback;
+  src: url("../public/fonts/lxe.woff") format("woff");
+}
+
+@font-face {
+  font-family: "lxe-base";
+  font-style: italic;
+  font-weight: 900;
+  font-display: fallback;
+  src: url("../public/fonts/lxe.woff") format("woff");
+} */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  --primary-orange: #f83d0c;
+  --purple: #8b3bdb;
+  --yellow: #fcac14;
+  --orange: #f83d0c;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  outline: none;
+  text-decoration: none;
+  color: unset;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+body.static {
+  overflow: hidden;
+}
+a {
+  width: fit-content;
+  position: relative;
+  z-index: 100;
+}
+a::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: 20px;
+  background: #fcac14;
+  -webkit-transform-origin: top;
+  transform-origin: top;
+  -webkit-transform: skewX(0deg) scaleY(0) rotate(10deg);
+  transform: skewX(0deg) scaleY(0) rotate(10deg);
+  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1),
+    -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: -1;
+}
+a:hover::before {
+  -webkit-transform-origin: bottom;
+  transform-origin: bottom;
+  -webkit-transform: skewX(-3deg) scaleY(1) rotate(0deg);
+  transform: skewX(-3deg) scaleY(1) rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s
+    cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: -webkit-transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    -webkit-transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

@@ -1,0 +1,53 @@
+#root {
+  overflow: hidden;
+}
+#scrollContent {
+  top: 0;
+  scroll-behavior: smooth;
+}
+.mouseball {
+  height: 50px;
+  aspect-ratio: 1/1;
+  background-color: var(--primary-orange);
+  z-index: 100;
+  position: absolute;
+  border-radius: 100%;
+  mix-blend-mode: difference;
+  overflow: hidden;
+}
+.mouseball.disabled {
+  pointer-events: none;
+  display: none;
+}
+@media (max-width: 1023px) {
+  .mouseball {
+    display: none;
+  }
+}
+
+#mouseButton {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  overflow: hidden;
+  cursor: pointer;
+  display: none;
+}
+#mouseButton.on__projects,
+#mouseButton.on__about,
+#mouseButton.on__preview {
+  display: unset;
+}
+#mouseButton > img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  transition: all 0.3s ease;
+}
+#mouseButton > img.left {
+  transform: rotate(-180deg);
+}
+#mouseButton.on__preview > img.left {
+  transform: rotate(0deg);
+}

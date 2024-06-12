@@ -1,0 +1,190 @@
+.view {
+  margin: 0;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  align-items: center;
+  gap: 40px;
+  background: transparent;
+  padding: 0 25px;
+  overflow: hidden;
+  display: none;
+}
+.view.isOpen {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.view__content {
+  flex: 0.6;
+  animation: appearFromLeft 2s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@keyframes appearFromLeft {
+  from {
+    transform: translate3d(-100px, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media (min-width: 1024px) {
+  .view__content.__right {
+    transform: skew(-3deg, 3deg);
+  }
+  .view__content.__left {
+    transform: skew(3deg, -3deg);
+  }
+  .view__content.__middle {
+    transform: skew(0deg, 0deg);
+  }
+}
+
+.view__content-preview {
+  background-color: #fff;
+  padding: 10px;
+  aspect-ratio: 16/9;
+}
+.view__content-preview > video {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+.view__desc {
+  flex: 0.4;
+  animation: appearFromRight 2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@keyframes appearFromRight {
+  from {
+    transform: translate3d(50px, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media (max-width: 1023px) {
+  .view {
+    flex-direction: column;
+    background-color: var(--yellow);
+    padding: 0;
+    justify-content: center;
+  }
+  .view__content {
+    flex: unset;
+    padding: 15px;
+  }
+  .view__desc {
+    flex: unset;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+.view__desc > h3 {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 700;
+  width: fit-content;
+  background: transparent;
+  position: relative;
+}
+.view__desc > h3::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #131313;
+  z-index: -1;
+  transform: translate(10px, 10px);
+}
+.view__desc > p {
+  max-width: 350px;
+  font-size: 20px;
+  line-height: 1.45;
+  color: #131313;
+  font-weight: 200;
+  margin-top: 25px;
+  position: relative;
+}
+.view__desc > p::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  z-index: -1;
+  transform: translate(10px, 10px);
+}
+
+@media (min-width: 1024px) {
+  .view__desc > h3::after,
+  .view__desc > p::after {
+    background-color: var(--yellow);
+    transform: translate(-10px, 10px);
+    height: 110%;
+  }
+}
+
+.view > button {
+  outline: none;
+  border: none;
+  background: transparent;
+  position: absolute;
+  top: 30px;
+  height: 70px;
+  right: 80px;
+  cursor: pointer;
+  pointer-events: all;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+}
+@media (min-width: 1024px) {
+  .view > button {
+    animation: appearFromRight 2s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+@media (max-width: 1023px) {
+  .view > button {
+    left: 50%;
+    top: 10vh;
+    transform: translate(-50%, -50%);
+  }
+}
+.view button > img {
+  object-fit: contain;
+  height: 100%;
+}
+
+.view > button {
+  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1),
+    -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media (min-width: 1023px) {
+  .view > button:hover {
+    background: #fcac14;
+    -webkit-transform: skewX(-3deg) scaleY(1) rotate(180deg);
+    transform: skewX(-3deg) scaleY(1) rotate(180deg);
+    -webkit-transition: -webkit-transform 0.3s
+      cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: -webkit-transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      -webkit-transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
