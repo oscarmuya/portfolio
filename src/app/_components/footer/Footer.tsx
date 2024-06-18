@@ -1,11 +1,12 @@
-import "./footer.css";
 type Props = {
   theme: string;
 };
 
+import "./footer.css";
+
 function Footer({ theme }: Props) {
   return (
-    <div className="footer">
+    <div className="fixed text-white top-0 w-full z-10 overflow-hidden left-0">
       <div className={`footer__content ${theme}`}>
         <ul>
           <li>

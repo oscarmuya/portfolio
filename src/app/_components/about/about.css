@@ -4,12 +4,14 @@
   overflow-x: scroll;
   overflow-y: hidden;
   scroll-behavior: smooth;
+  width: 100%;
 }
 @media (max-width: 1023px) {
   .about {
     flex-direction: column;
     margin-bottom: 100px;
     overflow: unset;
+    min-height: 70vh;
   }
 }
 .about::-webkit-scrollbar {
@@ -18,7 +20,8 @@
 .about__banner {
   background-color: #8b3bdb;
   padding: 30px;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   width: 80vw;
   min-width: 80vw;
   position: relative;
@@ -27,6 +30,7 @@
   .about__banner {
     width: 100%;
     max-width: 100%;
+    min-height: 50vh;
   }
 }
 .banner__top > span,
@@ -47,18 +51,14 @@
 }
 .about__content {
   padding: 39px 30px;
-  height: calc(100vh - 78px);
-  width: calc(100% - 60px);
-  min-width: calc(100% - 60px);
+  width: 100%;
+  min-width: 100%;
   display: flex;
 }
 @media (max-width: 1023px) {
   .about__content {
     flex-direction: column;
-    padding: 10px;
-    width: calc(100% - 20px);
-    min-width: calc(100% - 20px);
-    padding-bottom: 140px;
+    padding: 20px;
   }
 }
 .about__description {
@@ -70,7 +70,6 @@
   gap: 10px;
 }
 .about__infos-text > span {
-  font-weight: 300;
   font-size: 3.8rem;
   font-size: 38px;
   line-height: 105%;
@@ -79,7 +78,6 @@
 }
 @media (max-width: 767px) {
   .about__infos-text > span {
-    padding: 0 20px;
     font-size: 20px;
   }
 }
@@ -93,7 +91,7 @@
   margin-top: 40px;
 }
 .about__content > .contacts {
-  padding: 0 50px 0;
+  padding: 20px 0;
   flex: 0.35;
   border-left: 1px solid #f3f3f3;
 }
@@ -101,7 +99,6 @@
   .about__content > .contacts {
     border: none;
     border-top: 1px solid #f3f3f3;
-    padding: 15px;
   }
 }
 .contacts > h5 {
@@ -119,7 +116,6 @@
   flex-direction: column;
 }
 .contacts ul li span {
-  font-weight: 400;
   font-size: 1.6rem;
   line-height: 135%;
   letter-spacing: -0.01em;
@@ -138,7 +134,6 @@
 .banner__content {
   z-index: 1;
   height: 100%;
-  width: 100%;
   position: absolute;
 }
 .banner__content * {

@@ -1,16 +1,8 @@
 .projects {
   background-color: #efefe6;
-  height: 100vh;
-  width: fit-content;
-  position: relative;
-  overflow: hidden;
+  min-height: var(--app-height);
 }
 
-@media (max-width: 1023px) {
-  .projects {
-    height: fit-content;
-  }
-}
 .projects__content {
   height: 100%;
   width: 100%;

@@ -130,11 +130,18 @@
   src: url("../public/fonts/lxe.woff") format("woff");
 } */
 
-body {
+:root {
   --primary-orange: #f83d0c;
   --purple: #8b3bdb;
   --yellow: #fcac14;
   --orange: #f83d0c;
+  --blue: #1769e3;
+  --primary-bg: #1769e3;
+  --secondary-color: #ff0;
+  --app-height:100vh
+}
+
+body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;

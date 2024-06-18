@@ -1,34 +1,15 @@
 .header {
-  height: 100vh;
-  background-color: var(--primary-orange);
-  margin: 0;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
+  height: var(--app-height);
+  background-color: var(--primary-bg);
 }
-.header.orange {
-  background-color: #f83d0c;
-}
-.header.yellow {
-  background-color: #fcac14;
-}
-.header.pink {
-  background-color: #ff0096;
-}
-.header.violet {
-  background-color: #8b3bdb;
-}
-.header.green {
-  background-color: #2eff4d;
-}
+
 .content {
   z-index: 1;
 }
 @media (max-width: 1023px) {
   .header {
     justify-content: center;
+    height: 600px;
   }
 }
 .content__top {
@@ -56,7 +37,6 @@
   font-size: 160px;
   font-weight: 700;
   line-height: 1.1;
-  color: #fff;
   width: fit-content;
   background: transparent;
   overflow: hidden;
@@ -68,10 +48,10 @@
   }
 }
 .content__middle > span {
-  box-shadow: inset 0 -18px 0 0 #fff;
+  box-shadow: inset 0 -18px 0 0 var(--secondary-color);
 }
 .content__top > span {
-  box-shadow: inset 0 -18px 0 0 #fff;
+  box-shadow: inset 0 -18px 0 0 var(--secondary-color);
 }
 .content__middle-desc {
   display: flex;
@@ -86,7 +66,7 @@
 @media (max-width: 767px) {
   .content__top > span,
   .content__middle > span {
-    box-shadow: inset 0 -10px 0 0 #fff;
+    box-shadow: inset 0 -10px 0 0 var(--secondary-color);
   }
   .content__middle-desc {
     margin-top: 29px;
@@ -96,7 +76,6 @@
 }
 
 .content__middle-desc > span {
-  color: #fff;
   font-size: 23px;
   font-weight: 500;
   letter-spacing: 0.05rem;
@@ -112,7 +91,7 @@
 
 .background {
   position: absolute;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   top: 0;
   bottom: 0;

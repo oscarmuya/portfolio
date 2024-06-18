@@ -2,13 +2,12 @@
   overflow: hidden;
 }
 #scrollContent {
-  top: 0;
   scroll-behavior: smooth;
 }
 .mouseball {
   height: 50px;
   aspect-ratio: 1/1;
-  background-color: var(--primary-orange);
+  background-color: var(--primary-bg);
   z-index: 100;
   position: absolute;
   border-radius: 100%;

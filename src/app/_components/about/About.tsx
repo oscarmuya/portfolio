@@ -16,7 +16,7 @@ function About({}: Props) {
   }
 
   return (
-    <div className="about" id="About">
+    <div className="about relative" id="About">
       <div className="about__banner">
         <div className="banner__background">
           <div className="ball__1"></div>
@@ -31,7 +31,7 @@ function About({}: Props) {
           </div>
         </div>
       </div>
-      <div id="Contact" className="about__content">
+      <div id="Contact" className="about__content p-5">
         <div className="about__description">
           <p className="about__infos-text">
             <span>My name is Oscar Muya I am a Web developer</span>

@@ -7,7 +7,6 @@ import Footer from "../_components/footer/Footer";
 import Header from "../_components/header/Header";
 import Projects from "../_components/projects/Projects";
 import ProjectView from "../_components/projectview/ProjectView";
-import Transition from "../_components/transition/Transition";
 
 import arrow from "../../assets/arrow.png";
 import view from "../../assets/eye.gif";
@@ -37,6 +36,12 @@ const MainContent = ({ usedColor }: Props) => {
   const [disableScrolling, setDisableScrolling] = useState(false);
   const [footerColor, setFooterColor] = useState("light");
   const [details, setDetails] = useState({});
+
+  const appHeight = () => {
+    const doc = document.documentElement;
+    doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+  };
+  appHeight();
 
   useEffect(
     () =>
@@ -83,11 +88,6 @@ const MainContent = ({ usedColor }: Props) => {
   var scrollToY = 0;
 
   useEffect(() => {
-    //scroll body activate
-    //REMOVE LOADING TRANSITION
-    myTimer(function () {
-      setShowTransition(false);
-    }, 2100);
     //reset scroll
     var myCanvas = document.getElementById("scrollContent") as HTMLElement;
     var rect = myCanvas.getBoundingClientRect();
@@ -275,10 +275,10 @@ const MainContent = ({ usedColor }: Props) => {
   }
 
   return (
-    <>
+    <div className="body">
       <div
         aria-current={disableMouseBall}
-        className={`mouseball ${
+        className={`pointer-events-none mouseball ${
           (disableMouseBall && "disabled") ||
           (projectViewIsOpen && mouseballOnCloseProjectView && "disabled") ||
           (!projectViewIsOpen &&
@@ -318,7 +318,6 @@ const MainContent = ({ usedColor }: Props) => {
           </button>
         )}
       </div>
-
       <div id="scrollContent">
         <Header color={usedColor} />
         <Projects
@@ -338,9 +337,7 @@ const MainContent = ({ usedColor }: Props) => {
       >
         <Footer theme={footerColor} />
       </div>
-      {showTransition && (
-        <Transition color={usedColor} transitionType={transitionType} />
-      )}
+
       {/* {projectViewIsOpen && (
         <ProjectView
           handleCloseProject={closeOpenProject}
@@ -350,7 +347,7 @@ const MainContent = ({ usedColor }: Props) => {
           previews={previews}
         />
       )} */}
-    </>
+    </div>
   );
 };
 
