@@ -27,16 +27,6 @@ export default async function Page() {
           <div className="circle__2"></div>
           <div className="circle__3"></div>
           <div className="falling__1 bounce"></div>
-          {/* <div className="falling__2 bounce"></div>
-    <div className="falling__3 bounce"></div>
-    <div className="falling__1 bounce"></div>
-    <div className="falling__3 bounce"></div>
-    <div className="falling__1 bounce"></div>
-    <div className="falling__3 bounce"></div>
-    <div className="falling__2 bounce"></div>
-    <div className="falling__3 bounce"></div>
-    <div className="falling__1 bounce"></div>
-    <div className="falling__2 bounce"></div> */}
         </div>
         <div className="content text-secondaryColor">
           <div className="content__top">
@@ -44,17 +34,14 @@ export default async function Page() {
           </div>
           <div className="content__middle text-secondaryColor">
             <span>InBio</span>
-            <div className="content__middle-desc">
-              {/* <span>STARTUP</span>
-    <span>FOUNDER</span> */}
-            </div>
+            <div className="content__middle-desc"></div>
           </div>
         </div>
 
         <div className="flex w-full items-center justify-center">
           <div className="links w-full lg:px-10 flex flex-col gap-4 z-[2]">
             {projects.map((item) => (
-              <Clients item={item}>
+              <Clients key={item.id} item={item}>
                 <div className="bg-white w-full flex gap-2 items-center border shadow rounded p-4">
                   <div
                     className={`${

@@ -30,10 +30,10 @@ async function Projects({}: Props) {
         <div className="tiny__ball-2"></div>
       </div>
 
-      <div className="p-4 w-full gap-4 grid grid-cols-1 md:grid-cols-4">
+      <div className="p-4 w-full gap-4 md:gap-2 grid grid-cols-1 md:grid-cols-4">
         {projects.map((project, i) => {
           const t = i + 1;
-          const span =
+          let span =
             t % 5 === 1
               ? "md:col-span-2 md:row-span-2 md:h-[400px]"
               : t % 5 === 2
@@ -43,6 +43,7 @@ async function Projects({}: Props) {
               : t % 5 === 3
               ? "md:col-span-2 md:row-span-2 md:h-[400px]"
               : "md:h-[200px] spanned";
+          span = "md:min-h-[300px]";
 
           return (
             <div

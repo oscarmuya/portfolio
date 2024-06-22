@@ -21,7 +21,7 @@ const Clients = ({ item, children }: Props) => {
       ? "rml"
       : "unknown";
     const d = doc(db, "admin", id);
-    updateDoc(d, { [ref.host]: increment(1) });
+    updateDoc(d, { [`${ref.host}`]: increment(1) });
   };
 
   return (
