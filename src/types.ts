@@ -12,6 +12,9 @@ export type projectProps = {
   video: string;
   link: string;
   description: string;
+  image?: string;
+  logo?: string;
+  short?: string;
 };
 
 export type previewprops = { name: string; url: string };

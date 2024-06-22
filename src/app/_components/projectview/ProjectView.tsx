@@ -1,55 +1,47 @@
+"use client";
+
 import "./projectview.css";
-import { useEffect, useState } from "react";
 import close from "../../../assets/close.png";
 import { projectProps } from "@/types";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type Props = {
-  handleCloseProject: () => void;
-  open: boolean;
   project: projectProps;
-  previewXloc: string;
-  previews: { name: string; video: string; url: string; description: string }[];
 };
 
-function ProjectView({
-  handleCloseProject,
-  open,
-  project,
-  previewXloc,
-  previews,
-}: Props) {
-  const [videoSrc, setVideoSrc] = useState("");
-  useEffect(() => {
-    for (var preview in previews) {
-      if (
-        previews[preview].name.indexOf(project.video) >= 0 &&
-        project.video !== ""
-      ) {
-        setVideoSrc(previews[preview].url);
-      }
-    }
-  }, [project, previews]);
+function ProjectView({ project }: Props) {
+  const router = useRouter();
+
   return (
-    <div className={`view ${open && "isOpen"}`}>
-      <div className={`view__content __${previewXloc}`}>
-        <div className="view__content-preview">
-          <video
+    <div className="view relative isOpen">
+      <div className={`view__content __${100}`}>
+        <div className="view__content-preview bg-white md:bg-black">
+          {project.image && (
+            <Image height={200} width={400} src={project.image} alt="" />
+          )}
+          {/* <video
             src={videoSrc}
             autoPlay={true}
             loop={true}
             playsInline={true}
-          ></video>
+          ></video> */}
         </div>
       </div>
       <div className="view__desc">
         <h3>{project.name}</h3>
         <p>{project.description}</p>
-        <a target="_blank" rel="noreferrer noopener" href={project.link}>
+        <a
+          className="bg-primaryColor px-4 p-2 text-white rounded-full "
+          target="_blank"
+          rel="noreferrer noopener"
+          href={project.link}
+        >
           Visit Website
         </a>
       </div>
-      <button onClick={handleCloseProject}>
-        <img src={close.src} alt="" />
+      <button onClick={() => router.back()}>
+        <Image src={close} alt="" />
       </button>
     </div>
   );

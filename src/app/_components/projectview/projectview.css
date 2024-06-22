@@ -49,7 +49,6 @@
 }
 
 .view__content-preview {
-  background-color: #fff;
   padding: 10px;
   aspect-ratio: 16/9;
 }
@@ -138,7 +137,7 @@
   }
 }
 
-.view > button {
+.view button {
   outline: none;
   border: none;
   background: transparent;
@@ -152,15 +151,14 @@
   aspect-ratio: 1/1;
 }
 @media (min-width: 1024px) {
-  .view > button {
+  .view button {
     animation: appearFromRight 2s cubic-bezier(0.19, 1, 0.22, 1);
   }
 }
 @media (max-width: 1023px) {
-  .view > button {
-    left: 50%;
-    top: 10vh;
-    transform: translate(-50%, -50%);
+  .view button {
+    left: 10px;
+    top: 10px;
   }
 }
 .view button > img {
@@ -168,7 +166,7 @@
   height: 100%;
 }
 
-.view > button {
+.view button {
   -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
   transition: -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
   transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
@@ -176,7 +174,7 @@
     -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 @media (min-width: 1023px) {
-  .view > button:hover {
+  .view button:hover {
     background: #fcac14;
     -webkit-transform: skewX(-3deg) scaleY(1) rotate(180deg);
     transform: skewX(-3deg) scaleY(1) rotate(180deg);

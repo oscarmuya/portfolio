@@ -1,27 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-import About from "../_components/about/About";
-import Footer from "../_components/footer/Footer";
-import Header from "../_components/header/Header";
-import Projects from "../_components/projects/Projects";
-import ProjectView from "../_components/projectview/ProjectView";
-
 import arrow from "../../assets/arrow.png";
-import view from "../../assets/eye.gif";
-import { projectProps } from "@/types";
 
-type Props = {
-  usedColor: string;
-};
-
-const MainContent = ({ usedColor }: Props) => {
-  const [projects, setProjects] = useState<projectProps[]>([]);
-  const [previews, setPreviews] = useState({});
-  const [openProject, setOpenProject] = useState<projectProps>();
-  const [projectViewIsOpen, setProjectViewIsOpen] = useState(false);
-  const [mouseBallImage, setMouseBallImage] = useState(arrow);
+const MainContent = () => {
+  const [mouseBallImage] = useState(arrow);
   const [mouseXloc, setMouseXloc] = useState("");
   const [mouseOnProjects, setMouseOnProjects] = useState(false);
   const [mouseOnAbout, setMouseOnAbout] = useState(false);
@@ -29,25 +12,16 @@ const MainContent = ({ usedColor }: Props) => {
     useState(false);
   const [mouseBallOnOpenProject, setMouseBallOnOpenProject] = useState(false);
   const [disableMouseBall, setDisableMouseBall] = useState(false);
-  const [showTransition, setShowTransition] = useState(true);
-  const [transitionType, setTransitionType] = useState("loading");
   const [mouseOnPreview, setMouseOnPreview] = useState(false);
   const [mouseOnPreviewXloc, setMouseOnPreviewXloc] = useState("");
-  const [disableScrolling, setDisableScrolling] = useState(false);
-  const [footerColor, setFooterColor] = useState("light");
-  const [details, setDetails] = useState({});
 
-  const appHeight = () => {
-    const doc = document.documentElement;
-    doc.style.setProperty("--app-height", `${window.innerHeight}px`);
-  };
-  appHeight();
-
-  useEffect(
-    () =>
-      projectViewIsOpen ? setMouseBallImage(view) : setMouseBallImage(arrow),
-    [projectViewIsOpen]
-  );
+  useEffect(() => {
+    const appHeight = () => {
+      const doc = document.documentElement;
+      doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+    };
+    appHeight();
+  }, []);
 
   var count = 0;
   const handleMoveBallEvents = () => {
@@ -228,125 +202,28 @@ const MainContent = ({ usedColor }: Props) => {
     };
   }, []);
 
-  const handleOpenProject = (e: MouseEvent) => {
-    const target = e.target as HTMLElement;
-    let position = Number(target.getAttribute("aria-label"));
-
-    setOpenProject(projects[position]);
-    if (projectViewIsOpen) {
-      setProjectViewIsOpen(false);
-      setDisableScrolling(false);
-      document.body.classList.toggle("static");
-    } else {
-      setTransitionType("project__transition");
-      setShowTransition(true);
-      setProjectViewIsOpen(true);
-      setDisableScrolling(true);
-      document.body.classList.toggle("static");
-      myTimer(function () {
-        setShowTransition(false);
-      }, 1200);
-    }
-  };
-
-  const handleMouseOverProjectOpen = () => {
-    setMouseBallOnOpenProject(true);
-  };
-  const handleMouseOutProjectOpen = () => {
-    setMouseBallOnOpenProject(false);
-  };
-
-  function myTimer(cb: () => void, ms: number) {
-    const begin = performance.now();
-    const channel = (myTimer.channel ??= new MessageChannel());
-    const controller = new AbortController();
-    channel.port1.addEventListener(
-      "message",
-      (evt: { data: number }) => {
-        if (performance.now() - begin >= ms) {
-          controller.abort();
-          cb();
-        } else if (evt.data === begin) channel.port2.postMessage(begin);
-      },
-      { signal: controller.signal }
-    );
-    channel.port1.start();
-    channel.port2.postMessage(begin);
-  }
-
   return (
-    <div className="body">
-      <div
-        aria-current={disableMouseBall}
-        className={`pointer-events-none mouseball ${
-          (disableMouseBall && "disabled") ||
-          (projectViewIsOpen && mouseballOnCloseProjectView && "disabled") ||
-          (!projectViewIsOpen &&
-            mouseOnProjects &&
-            mouseBallOnOpenProject &&
-            "disabled")
+    <div
+      aria-current={disableMouseBall}
+      className={`pointer-events-none mouseball ${
+        (disableMouseBall && "disabled") ||
+        (mouseballOnCloseProjectView && "disabled") ||
+        (mouseOnProjects && mouseBallOnOpenProject && "disabled")
+      }`}
+    >
+      <button
+        onClick={handleMoveBallEvents}
+        className={`${
+          (mouseOnProjects && "on__projects") || (mouseOnAbout && "on__about")
         }`}
+        id="mouseButton"
       >
-        {projectViewIsOpen ? (
-          <a
-            href={openProject?.link}
-            rel="noreferrer"
-            target="_blank"
-            className={`${mouseOnPreview ? "on__preview" : "off__preview"}`}
-            id="mouseButton"
-          >
-            <img
-              className={`${mouseXloc === "left" ? "left" : "right"}`}
-              src={mouseBallImage.src}
-              alt=""
-            />
-          </a>
-        ) : (
-          <button
-            onClick={handleMoveBallEvents}
-            className={`${
-              (!projectViewIsOpen && mouseOnProjects && "on__projects") ||
-              (!projectViewIsOpen && mouseOnAbout && "on__about")
-            }`}
-            id="mouseButton"
-          >
-            <img
-              className={`${mouseXloc === "left" ? "left" : "right"}`}
-              src={mouseBallImage.src}
-              alt=""
-            />
-          </button>
-        )}
-      </div>
-      <div id="scrollContent">
-        <Header color={usedColor} />
-        <Projects
-          handleOpenProject={handleOpenProject}
-          passProjects={setProjects}
-          handleMouseOverProjectOpen={handleMouseOverProjectOpen}
-          handleMouseOutProjectOpen={handleMouseOutProjectOpen}
-          passPreviews={setPreviews}
+        <img
+          className={`${mouseXloc === "left" ? "left" : "right"}`}
+          src={mouseBallImage.src}
+          alt=""
         />
-        <About />
-      </div>
-
-      <div
-        onMouseOver={handleMouseOverProjectOpen}
-        onMouseOut={handleMouseOutProjectOpen}
-        className="z-30 pointer-events-auto"
-      >
-        <Footer theme={footerColor} />
-      </div>
-
-      {/* {projectViewIsOpen && (
-        <ProjectView
-          handleCloseProject={closeOpenProject}
-          open={projectViewIsOpen}
-          project={openProject}
-          previewXloc={mouseOnPreviewXloc}
-          previews={previews}
-        />
-      )} */}
+      </button>
     </div>
   );
 };

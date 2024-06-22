@@ -228,3 +228,11 @@
     top: 600px;
   }
 }
+
+@media (min-width: 768px) {
+  .spanned .trunc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
