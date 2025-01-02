@@ -16,17 +16,7 @@ function ProjectView({ project }: Props) {
   return (
     <div className="view relative isOpen">
       <div className={`view__content __${100}`}>
-        <div className="view__content-preview bg-white md:bg-black">
-          {project.image && (
-            <Image height={200} width={400} src={project.image} alt="" />
-          )}
-          {/* <video
-            src={videoSrc}
-            autoPlay={true}
-            loop={true}
-            playsInline={true}
-          ></video> */}
-        </div>
+        <Image height={1080} width={1920} src={project?.banner ?? ""} alt="" />
       </div>
       <div className="view__desc">
         <h3>{project.name}</h3>

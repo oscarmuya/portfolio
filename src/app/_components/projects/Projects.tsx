@@ -1,4 +1,3 @@
-import ph from "../../../../public/pb.jpg";
 import db from "@/firebase/firebase";
 import Image from "next/image";
 import { projectProps } from "@/types";
@@ -30,39 +29,37 @@ async function Projects({}: Props) {
         <div className="tiny__ball-2"></div>
       </div>
 
-      <div className="p-4 w-full gap-4 md:gap-2 grid grid-cols-1 md:grid-cols-4">
+      <div className="md:p-4 w-full gap-6 flex flex-col">
         {projects.map((project, i) => {
-          const t = i + 1;
-          let span =
-            t % 5 === 1
-              ? "md:col-span-2 md:row-span-2 md:h-[400px]"
-              : t % 5 === 2
-              ? "md:col-span-2 md:row-span-1 md:h-[200px]"
-              : t % 5 === 4 || t % 5 === 5
-              ? "md:h-[200px] spanned md:col-span-1 md:row-span-1"
-              : t % 5 === 3
-              ? "md:col-span-2 md:row-span-2 md:h-[400px]"
-              : "md:h-[200px] spanned";
-          span = "md:min-h-[300px]";
+          const flex = i % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row";
 
           return (
             <div
               aria-label={String(i)}
               key={i}
-              className={`${span} group/projects bg-black after:bg-black/40 after:top-0 after:left-0 after:w-full after:h-full after:absolute relative overflow-hidden z-[1] text-white rounded-xl border bg-cover`}
+              className={`g-fit group/projects bg-transparent after:bg-transparent after:top-0 after:left-0 after:w-full after:h-full after:absolute relative overflow-hidden z-[1] text-white rounded-xl`}
             >
-              <Link className="w-full h-full" href={"p/" + project.id}>
-                <div className="w-full h-full p-4">
+              <Link
+                className="w-full hide flex items-center justify-center h-full"
+                href={"p/" + project.id}
+              >
+                <div
+                  className={`${flex} w-full gap-0 md:gap-0 flex flex-col relative h-full md:p-4`}
+                >
                   <Image
-                    className="h-full w-full group-hover/projects:scale-110 transition-transform object-cover absolute top-0 left-0"
+                    className="w-full md:w-2/3 aspect-auto object-contain group-hover/projects:scale-105 transition-transform"
                     alt="bg"
-                    src={ph}
+                    width={1920}
+                    height={1080}
+                    src={project?.banner ?? ""}
                   />
-                  <div className="flex-col flex items-start gap-4 h-full justify-center z-[2] relative">
-                    <h1 className="text-5xl text-start font-bold">
+                  <div className="p-4 md:p-0 flex-col h-fill w-full md:w-1/3 flex items-center md:items-start gap-4 justify-center z-[2] relative">
+                    <h1 className="text-5xl text-center text-gray-900 md:text-start font-bold">
                       {project.name}
                     </h1>
-                    <p className="trunc w-full left-0">{project.description}</p>
+                    <p className="trunc text-center md:text-start md:text-xl text-gray-900 w-full left-0">
+                      {project.description}
+                    </p>
                   </div>
                 </div>
               </Link>

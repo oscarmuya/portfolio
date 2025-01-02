@@ -15,6 +15,7 @@ export type projectProps = {
   image?: string;
   logo?: string;
   short?: string;
+  banner?: string;
 };
 
 export type previewprops = { name: string; url: string };

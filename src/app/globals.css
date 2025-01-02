@@ -138,7 +138,7 @@
   --blue: #1769e3;
   --primary-bg: #1769e3;
   --secondary-color: #ff0;
-  --app-height:100vh
+  --app-height: 100vh;
 }
 
 body {
@@ -196,6 +196,9 @@ a::before {
   transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1),
     -webkit-transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
   z-index: -1;
+}
+a.hide::before {
+  display: none;
 }
 a:hover::before {
   -webkit-transform-origin: bottom;

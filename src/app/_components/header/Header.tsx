@@ -30,8 +30,8 @@ function Header({ color }: Props) {
         <div className="content__middle text-secondaryColor">
           <span>Muya</span>
           <div className="content__middle-desc">
-            <span>STARTUP</span>
-            <span>FOUNDER</span>
+            <span>PROBLEM</span>
+            <span>SOLVER</span>
           </div>
         </div>
       </div>
